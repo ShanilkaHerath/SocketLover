@@ -9,22 +9,23 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import static socketlover.Chat_Server.dout;
+import static socketlover.Chat_Server.ss;
 
 /**
  *
- * @author Acer
+ * @author Achini
  */
-public class Chat_Server extends javax.swing.JFrame {
-
-    static ServerSocket ss;
+public class Chat_Client extends javax.swing.JFrame {
+    
     static Socket s;
     static DataInputStream dis;
     static DataOutputStream dout;
-    
+
     /**
-     * Creates new form Chat_Server
+     * Creates new form Chat_Client
      */
-    public Chat_Server() {
+    public Chat_Client() {
         initComponents();
     }
 
@@ -37,18 +38,15 @@ public class Chat_Server extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         msg_area = new javax.swing.JTextArea();
         msg_text = new javax.swing.JTextField();
         msg_send = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Socket Lover : Server");
-
-        msg_area.setBackground(new java.awt.Color(51, 153, 255));
+        msg_area.setBackground(new java.awt.Color(0, 153, 153));
         msg_area.setColumns(20);
         msg_area.setFont(new java.awt.Font("Monospaced", 0, 15)); // NOI18N
         msg_area.setRows(5);
@@ -63,6 +61,9 @@ public class Chat_Server extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Socket Lover : Client");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,26 +71,28 @@ public class Chat_Server extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(msg_text, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(msg_text, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(msg_send, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
+                        .addComponent(msg_send, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(msg_text)
-                    .addComponent(msg_send, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(msg_text, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(msg_send))
                 .addContainerGap())
         );
 
@@ -97,8 +100,9 @@ public class Chat_Server extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void msg_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msg_sendActionPerformed
-
-        try{
+        // TODO add your handling code here:
+        
+         try{
             String msg="";
             msg=msg_text.getText();
             dout.writeUTF(msg);
@@ -107,6 +111,7 @@ public class Chat_Server extends javax.swing.JFrame {
         catch(Exception e){
             
         }
+        
     }//GEN-LAST:event_msg_sendActionPerformed
 
     /**
@@ -126,33 +131,33 @@ public class Chat_Server extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Chat_Server.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Chat_Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Chat_Server.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Chat_Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Chat_Server.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Chat_Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Chat_Server.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Chat_Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Chat_Server().setVisible(true);
+                new Chat_Client().setVisible(true);
             }
         });
         
-        try {
+         try {
             String msgin = "";
-            ss = new ServerSocket(1201);
-            s = ss.accept();
+           
+            s = new Socket("127.0.0.1",1201); /* IP Address of localhost */
             dis = new DataInputStream(s.getInputStream());
             dout = new DataOutputStream(s.getOutputStream());
 
             while (!msgin.equals("exit")) {
                 msgin = dis.readUTF();
-                msg_area.setText(msg_area.getText() + "\n Client : " + msgin);
+                msg_area.setText(msg_area.getText() + "\n Server : " + msgin);
 
             }
         } catch (Exception e) {
